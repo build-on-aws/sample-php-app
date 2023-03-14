@@ -1,11 +1,27 @@
-## My Project
+# Simple LAMP stack To Do List
 
-TODO: Fill this README out!
+This application is designed to be part of various Amazon Lightsail workshops. This repository includes the PHP front end which needs to be paired with a MySQL 5.7 database.
 
-Be sure to:
+The parameters for the database connectivity (hostname, username, password) are stores in a file called *config.php*. This file must be located in the *configs* directory one level above your HTML document root directory. Additionally make sure the permissions on the *configs* directory are set correctly (e.g. set the owner to be the account that your web server runs under).
 
-* Change the title in this README
-* Edit your repository description on GitHub
+If you are using a Lightsail LAMP instance, the following instructions will take care of everything you need.
+
+* These instructions assume you deleted any existing files under /opt/bitnami/apache2/htdocs and cloned this repo there e.g.
+
+        cd /opt/bitnami/apache2/htdocs && \
+        rm -rf && \
+        git clone https://github.com/build-on-aws/sample-php-app .
+
+* Create the *configs* directory and make the bitnami user the owner.
+
+        sudo mkdir /opt/bitnami/apache2/configs && \
+        sudo chown bitnami:bitnami /opt/bitnami/apache2/configs
+
+* Move the config file into the configuration directory
+
+        sudo mv /opt/bitnami/apache2/htdocs/config.php /opt/bitnami/apache2/configs/config.php
+
+You can then edit the *config.php* file to reflect the appropriate username, password, and hostname
 
 ## Security
 
@@ -14,4 +30,3 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 ## License
 
 This library is licensed under the MIT-0 License. See the LICENSE file.
-
